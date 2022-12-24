@@ -62,8 +62,7 @@ services:
       <<: *airflow-common
       networks:
         - covid_data_transfer
-      #command: airflow db init 
-      command: bash -c "airflow scheduler db init && ./create_mysql_conn.sh"
+      command: airflow db init 
       environment:
         <<: *airflow-common-env
         _AIRFLOW_WWW_USER_CREATE: 'true'
