@@ -48,24 +48,41 @@ For some unknown reason, the initiation of airflow container will fail for the f
 After running ```docker-compose -f path_to_docker_compose_yaml up ```  again, you should be able to have all containers ready. Note that the airflow_init container will only run once thus will not be always active after finishing initiation.
 ![image](https://user-images.githubusercontent.com/64818741/212533958-7b5b4bcf-221d-4d90-9617-3d6509334a15.png)
 
+- **Create mysql_conn connection in Apache airflow webpage**
+1. Type **localhost:8080** in your local browser
+2. Go to Admin->Connections
+3. Click + sign on top left corner to add new connection
+4. Configure the MySQL connection as below(password is password)
+![image](https://user-images.githubusercontent.com/64818741/212553240-758fe1bf-e0ff-4c6a-99f4-cbd6610e950e.png)
+![image](https://user-images.githubusercontent.com/64818741/212553206-a4489a70-d24a-4305-b506-afe511bcd481.png)
+
+
 - **Initiate covid19 databases**<br>
 There are two ways to perform initialization of covid19 databases. The first is through Apache airflow webpage, the other is run MySQL script directly.<br>
 
 **Apache airflow web interface**
-1. Type localhost:8080 in your local browser
+1. Type **localhost:8080** in your local browser
 2. Type user name and password if requested. (username: aritek, password: password)
 3. Unpause the initiate_database dag
 4. Trigger the initiate_database dag
 ![image](https://user-images.githubusercontent.com/64818741/212548802-abab6dd3-d8bd-4c7a-abf7-845271260283.png)
 *It could take pretty long for the initialization because the dag will create data from nothing and there is almost 3 year data to process.*
 
-**Run MySQL script directly**
+**Run MySQL script directly(Data updated to 2022/10/31)**
 1. Open CLI of container covid19_docker_mysql_1
 2. Type ```mysql -u aritek -p```
 3. Type ```password``` if requested for password, then you are now in mysql CLI
 ![image](https://user-images.githubusercontent.com/64818741/212549083-462b9046-a5f5-4bfa-b93c-b836493beaef.png)
+4. Run ```source source.sql``` to run three subsequent scripts for three tables. It could take some time.
+![image](https://user-images.githubusercontent.com/64818741/212552389-2eb658b9-3a22-4494-aaa4-4028cc36a154.png)<br>
+*This method should be faster since it does not require data fetching and transforming like previous method. However, the current script was updated to 2022/10/31 instead of most current data. If you wish to see latest data, please choose first method. If you just need to see how the deployed website looks like, take method 2.*
 
+- **Restart the Django container**<br>
+When the Django container was first created and activated, there is no data in the database, making the website not workable. After the initialization of databases was done, restart the Django container, and type **localhost:8000** in your browser. The website should now be available for you!
+![image](https://user-images.githubusercontent.com/64818741/212552754-f2b308c5-490e-4496-b2fd-67b4bd61ee5f.png)
+![image](https://user-images.githubusercontent.com/64818741/212552822-1da4af2f-461b-4fb0-b493-a8c946514af9.png)
 
-- ****<br>
+- **Unpause the updage dags and trigger them to have daily update**
+If you need the data to be updated on a daily basis, unpause the three update dags and trigger
 
-- ****<br>
+# Conclusion
