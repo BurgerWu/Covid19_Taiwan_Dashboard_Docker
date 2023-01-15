@@ -48,7 +48,23 @@ For some unknown reason, the initiation of airflow container will fail for the f
 After running ```docker-compose -f path_to_docker_compose_yaml up ```  again, you should be able to have all containers ready. Note that the airflow_init container will only run once thus will not be always active after finishing initiation.
 ![image](https://user-images.githubusercontent.com/64818741/212533958-7b5b4bcf-221d-4d90-9617-3d6509334a15.png)
 
-- **Initiate**<br>
+- **Initiate covid19 databases**<br>
+There are two ways to perform initialization of covid19 databases. The first is through Apache airflow webpage, the other is run MySQL script directly.<br>
+
+**Apache airflow web interface**
+1. Type localhost:8080 in your local browser
+2. Type user name and password if requested. (username: aritek, password: password)
+3. Unpause the initiate_database dag
+4. Trigger the initiate_database dag
+![image](https://user-images.githubusercontent.com/64818741/212548802-abab6dd3-d8bd-4c7a-abf7-845271260283.png)
+*It could take pretty long for the initialization because the dag will create data from nothing and there is almost 3 year data to process.*
+
+**Run MySQL script directly**
+1. Open CLI of container covid19_docker_mysql_1
+2. Type ```mysql -u aritek -p```
+3. Type ```password``` if requested for password, then you are now in mysql CLI
+![image](https://user-images.githubusercontent.com/64818741/212549083-462b9046-a5f5-4bfa-b93c-b836493beaef.png)
+
 
 - ****<br>
 
