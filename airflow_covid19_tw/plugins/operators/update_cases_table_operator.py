@@ -43,9 +43,8 @@ class UpdateCasesTableOperator(BaseOperator):
         
         #Iterate through table to be updated
         for values in to_update_case.values:    
-            real_date = values[1].replace('/','-')
             #Append insert segment into original SQL command
-            sql_insert = sql_insert + "('{}','{}','{}','{}','{}',{}),".format(real_date,values[2],values[4],values[5],values[6],values[7])
+            sql_insert = sql_insert + "('{}','{}','{}','{}','{}',{}),".format(values[1],values[2],values[4],values[5],values[6],values[7])
 
         #Log update information and run SQL command
         if to_update_case.shape[0] > 0:
