@@ -1,4 +1,5 @@
-# Covid19_Taiwan_Dashboard_Docker
+# Covid19_Taiwan_Dashboard_Docker_Compose
+<img src="images/burger.png" height="150"><img src="images/docker.png" height="150"><img src="images/airflow.png" height="150"><img src="images/django.png" height="150"><img src="images/mysql.png" height="150">
 ## Introduction
 This is the docker-compose version of my previous projects: <a href='https://github.com/BurgerWu/airflow_covid19_tw'>airflow_covid19_tw</a> and <a href='https://github.com/BurgerWu/Covid19_Django_Webapp'>Covid19_Django_Webapp</a>.
 Instead of making an online website, this project provides a solution to deploy the website in a easy way on any platform any machine as long as there is docker engine installed. This tutorial is based on Windows Docker desktop.
@@ -78,11 +79,22 @@ There are two ways to perform initialization of covid19 databases. The first is 
 *This method should be faster since it does not require data fetching and transforming like previous method. However, the current script was updated to 2022/10/31 instead of most current data. If you wish to see latest data, please choose first method. If you just need to see how the deployed website looks like, take method 2.*
 
 - **Restart the Django container**<br>
-When the Django container was first created and activated, there is no data in the database, making the website not workable. After the initialization of databases was done, restart the Django container, and type **localhost:8000** in your browser. The website should now be available for you!
+When the Django container was first created and activated, there is no data in the database, making the website not workable. After the initialization of databases was done, restart the Django container, and type **localhost:8000** in your browser. The website should now be available for you!<br>
 ![image](https://user-images.githubusercontent.com/64818741/212552754-f2b308c5-490e-4496-b2fd-67b4bd61ee5f.png)
 ![image](https://user-images.githubusercontent.com/64818741/212552822-1da4af2f-461b-4fb0-b493-a8c946514af9.png)
 
 - **Unpause the updage dags and trigger them to have daily update**
-If you need the data to be updated on a daily basis, unpause the three update dags and trigger
+If you need the data to be updated on a daily basis, unpause the three update dags and trigger(run right away) or wait til the execution time is reached.
 
 # Conclusion
+In this project, we successfully turn our former projects into one docker-compose that everyone can carry around through any platform running Docker-Compose. The Apache airflow is responsible for data acquisition and update task while Django framework fulfills the visualization of the data. 
+
+There are some Medium articles related to this work for you to reference.
+- <a href='https://blog.devops.dev/two-major-ways-to-bulk-import-data-to-mysql-database-4621d482f8f7'>Two Major Ways to Bulk Import Data to MySQL Database</a>
+- <a href='https://blog.devgenius.io/implement-interactive-plotly-dash-plot-within-your-django-project-66f3f4fbef94'>Implement Interactive Plotly Dash Plot Within Your Django Project</a>
+- <a href='https://burgercewu.medium.com/taiwan-covid19-dashboard-data-engineering-project-b557f22341de'>Taiwan Covid19 Dashboard Data Engineering Project</a>
+- <a href='https://python.plainenglish.io/apache-airflow-how-to-correctly-setup-custom-plugins-2f80fe5e3dbe'>How to Correctly Setup Custom Plugins of Apache Airflow</a>
+
+Finally, the legacy repository for covid19 dashboard project
+- <a href='https://github.com/BurgerWu/airflow_covid19_tw'>airflow_covid19_tw</a>
+- <a href='https://github.com/BurgerWu/Covid19_Django_Webapp'>Covid19_Django_Webapp</a>
