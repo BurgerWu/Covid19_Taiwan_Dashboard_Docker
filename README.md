@@ -38,15 +38,17 @@ Check <a href='https://docs.docker.com/compose/install/'>here </a>for more infor
 This is the combination docker version of my previous project airflow_covid19_tw and Covid19_Django_Webapp.
 
 - **Run docker-compose command**<br>
-Direct your working directory or specify the full path to which this project was downloaded. Run the following command.<br>
-```docker-compose -f path_to_docker_compose_yaml up ```
+Direct your working directory or specify the full path to which this project was downloaded. Run the following command. This will create required images according to yaml file specified and up the containers.<br>
+```docker-compose -f path_to_docker_compose_yaml up ```<br>
 
-This will create required images according to yaml file specified and up the containers.
+- **You may need to run last command twice for unknown reason**<br>
+For some unknown reason, the initiation of airflow container will fail for the first time, and you may need to run the same command again so that the docker system will be successfully up. You may see error message like below
+![image](https://user-images.githubusercontent.com/64818741/212533820-6b53e84e-90de-4581-b323-3c9d695d2a8d.png)
+![image](https://user-images.githubusercontent.com/64818741/212533870-f8ca31c4-55fd-427e-9c57-57c701a3c138.png)
+After running ```docker-compose -f path_to_docker_compose_yaml up ```  again, you should be able to have all containers ready. Note that the airflow_init container will only run once thus will not be always active after finishing initiation.
+![image](https://user-images.githubusercontent.com/64818741/212533958-7b5b4bcf-221d-4d90-9617-3d6509334a15.png)
 
-- **You may need to run previous command twice for unknown reason**<br>
-For some unknown reason, the initiation of airflow container will fail for the first time, and you may need to run the same command again so that the docker system will be successfully up.
-
-- ****<br>
+- **Initiate**<br>
 
 - ****<br>
 
