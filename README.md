@@ -32,7 +32,9 @@ Apply Django framework to demonstrate transformed covid19 Taiwan data from previ
 You may git clone this project or download zip file directly from Github
 
 - **Have docker engine install on your machine:**<br>
-Check out <a href='https://www.docker.com/products/docker-desktop/'>Docker official site </a> for more information.
+Check out <a href='https://www.docker.com/products/docker-desktop/'>Docker official site </a> for more information.<br>
+***Try to allocate some more resources to docker if possible, some initialization process requires relatively high memory usage***
+
 
 - **Install docker-compose:**<br>
 Check <a href='https://docs.docker.com/compose/install/'>here </a>for more information. If you already install docker desktop, docker-compose should come along with the installation.
@@ -43,7 +45,7 @@ Direct your working directory or specify the full path to which this project was
 ```docker-compose -f path_to_docker_compose_yaml up ```<br>
 
 - **You may need to run last command twice for unknown reason**<br>
-For some unknown reason, the initiation of airflow container will fail for the first time, and you may need to run the same command again so that the docker system will be successfully up. You may see error message like below
+For some unknown reason(probably cause by docker up sequence won't wait till the dependent container be fully ready), the initiation of airflow container will fail for the first time, and you may need to run the same command again so that the docker system will be successfully up. You may see error message like below
 ![image](https://user-images.githubusercontent.com/64818741/212533820-6b53e84e-90de-4581-b323-3c9d695d2a8d.png)
 ![image](https://user-images.githubusercontent.com/64818741/212533870-f8ca31c4-55fd-427e-9c57-57c701a3c138.png)
 After running ```docker-compose -f path_to_docker_compose_yaml up ```  again, you should be able to have all containers ready. Note that the airflow_init container will only run once thus will not be always active after finishing initiation.
@@ -87,7 +89,7 @@ When the Django container was first created and activated, there is no data in t
 If you need the data to be updated on a daily basis, unpause the three update dags and trigger(run right away) or wait til the execution time is reached.
 
 # Conclusion
-In this project, we successfully turn our former projects into one docker-compose that everyone can carry around through any platform running Docker-Compose. The Apache airflow is responsible for data acquisition and update task while Django framework fulfills the visualization of the data. 
+In this project, we successfully turn our former projects into one docker-compose that everyone can carry around through any platform running Docker-Compose. The Apache airflow is responsible for data acquisition and update task while Django framework fulfills the visualization of the data. If you encounter some problems during usage(like frequent restarting or auto termination), try to allocate some more resources(especially memory) to docker.
 
 There are some Medium articles related to this work for you to reference.
 - <a href='https://blog.devops.dev/two-major-ways-to-bulk-import-data-to-mysql-database-4621d482f8f7'>Two Major Ways to Bulk Import Data to MySQL Database</a>
