@@ -97,6 +97,9 @@ There are some Medium articles related to this work for you to reference.
 - <a href='https://burgercewu.medium.com/taiwan-covid19-dashboard-data-engineering-project-b557f22341de'>Taiwan Covid19 Dashboard Data Engineering Project</a>
 - <a href='https://python.plainenglish.io/apache-airflow-how-to-correctly-setup-custom-plugins-2f80fe5e3dbe'>How to Correctly Setup Custom Plugins of Apache Airflow</a>
 
+Power BI online report of this project can be found here!<br>
+<a href='https://app.powerbi.com/view?r=eyJrIjoiYTQyY2Q3NmQtZjYwYy00NGE0LTljYjUtYTU0YmRkZDc5MGNmIiwidCI6Ijk1Y2U2MTk5LWNhMzYtNDgyMC04N2MzLWQ1NDBjODYwMjcwYyIsImMiOjEwfQ%3D%3D&pageName=ReportSection'>Power BI of Covid19 Taiwan DashBOard Project</a>
+
 Finally, the legacy repository for covid19 dashboard project
 - <a href='https://github.com/BurgerWu/airflow_covid19_tw'>airflow_covid19_tw</a>
 - <a href='https://github.com/BurgerWu/Covid19_Django_Webapp'>Covid19_Django_Webapp</a>
